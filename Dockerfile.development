@@ -6,6 +6,7 @@ COPY . /test-travis
 ENV PYTHONPATH="$PYTHONPATH:/test-travis/hello_world"
 
 RUN pip3 install \
-    -r /test-travis/requirements.txt
+    -r /test-travis/requirements.txt \
+    -r /test-travis/requirements-dev.txt
 
 CMD python3 hello_world/server.py

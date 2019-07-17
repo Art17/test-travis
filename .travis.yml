@@ -1,0 +1,23 @@
+language: python
+sudo: required
+dist: xenial
+python:
+- '3.6'
+- '3.7'
+addons:
+  sshknownhosts:
+  - 159.89.205.104
+branches:
+  only:
+  - master
+env:
+  global:
+  - REMOTEAPPDIR=~/travis-test/
+  - REMOTEUSER=deploy
+  - REMOTEHOST=159.89.205.104
+install:
+- pip install -r requirements.txt -r requirements-dev.txt
+script:
+  - flake8 hello_world
+after_success:
+- "./scripts/deploy.sh"
